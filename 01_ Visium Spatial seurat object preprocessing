@@ -1,0 +1,137 @@
+#title: "Visium Spatial seurat object: Create and preprocessing"
+#date: "2024-10-03"
+
+# Inputs: Spatial transcriptomics data from 10X Genomics
+# Outputs: Processed spatial objects
+#
+# Required Packages:
+# - Seurat: For data loading, processing, and visualization
+# - ggplot2: For data visualization
+#
+# Tool References:
+# - Seurat: Stuart et al., "Comprehensive Integration of Single-Cell Data", Cell 2019.
+
+
+#install.packages('BiocManager')
+#BiocManager::install('glmGamPoi')
+
+
+# Load necessary libraries
+library(Seurat)     # For spatial transcriptomics and general single-cell data analysis
+library(ggplot2)    # For visualization
+library(dplyr)  # For data manipulation (optional, based on needs)
+library(glmGamPoi)
+library(tools)   # For handling file paths, e.g., removing extensions
+library(VennDiagram)
+library(openxlsx) #for excel files
+library(writexl)
+library(xlsx)
+library(clustree)
+
+
+
+
+# ____________________Define directories
+
+# Define directory @examples:
+#   data.dir<-'path/to/data/directory'  # containing filtered_feature_bc_matrix.h5 and tissue possition list.csv #example:data.dir<- path to Cap.area1 folder
+#   image.dir<-'path/to/data/images directory' # containing tissue lowres, hires images, scalefactors_json.json and tissue_positions_list.csv
+#   example: Cap.area1->image
+#   spatial.dir<-'path/to/data/directory/spatial' # within data.dir, to store image of the tissue slice1, add json, tissue_lowres and positions.csv
+#   object.dir<-'path/to/data/directory/objects' #to save seurat objects
+#   plots.dir<-'path/to/data/directory/plots' 
+
+
+setwd("/Users/new_user/Desktop/Alba_spatial_analysis")
+
+analysis.dir <- "~/Desktop/Alba_spatial_analysis" # very general folder
+
+# Directories for seurat objects preQC 
+base.dir <- "/Users/new_user/Desktop/Alba_spatial_analysis/samples_create_objects"
+object.dir <- file.path(base.dir, "seurat_objects_preQC"); dir.create(object.dir)
+plots.dir <- file.path(base.dir, "seurat_plots_preQC"); dir.create(plots.dir)
+
+# Directories for seurat objects postQC 
+seurat.dir <- file.path(analysis.dir, "seurat"); dir.create(seurat.dir)
+seurat_obj.dir <- file.path(seurat.dir, "seurat_objects"); dir.create(seurat_obj.dir)
+seurat_obj_plots.dir <- file.path(seurat.dir, "seurat_plots"); dir.create(seurat_obj_plots.dir)
+
+postQC_plots.dir<- file.path(seurat_obj_plots.dir, "postQC"); dir.create(postQC_plots.dir)
+postQC_obj.dir <- file.path(seurat_obj.dir, "postQC"); dir.create(postQC_obj.dir)
+
+# Directories for gene expression spot-clustering (individual samples)
+
+clust_obj.dir <- file.path(postQC_obj.dir, "Clustering"); dir.create(clust_obj.dir)
+clust_plots.dir <- file.path(postQC_plots.dir, "Clustering"); dir.create(clust_plots.dir)
+
+# Directories for assay homogeneization:
+V1V2_commongenes_obj.dir <- file.path(object.dir, "V1V2_commongenes"); dir.create(V1V2_commongenes_obj.dir)
+V1V2_commongenes_plots.dir<- file.path(plots.dir, "V1V2_commongenes"); dir.create(V1V2_commongenes_plots.dir)
+
+V1V2_postQC_obj.dir<-file.path(postQC_obj.dir, "V1V2_commongenes"); dir.create(V1V2_postQC_obj.dir)
+V1V2_postQC_plots.dir<-file.path(postQC_plots.dir, "V1V2_commongenes"); dir.create(V1V2_postQC_plots.dir)
+
+
+##########################################  Section 1: Create objects  #####################################
+
+##______________________________Create Seurat object from Visium 10x Genomics_________
+
+
+# List all folders in the base directory starting with "Cap.area"
+sample_dirs <- list.dirs(base.dir, full.names = TRUE, recursive = FALSE) #list of all the path to folders. in base.dir directory
+cap_area_dirs <- sample_dirs[grepl("Cap\\.area[0-9]+$", sample_dirs)] #selecting only those directories whose names match the pattern Cap.area
+cap_area_dirs
+
+
+#____________Loop through each directory to process the samples
+
+for (sample_dir in cap_area_dirs) {
+  # Extract the sample name from the directory
+  sample_name <- basename(sample_dir)
+  
+  # Define the image and spatial directories for each sample
+  image.dir <- file.path(sample_dir, "image")  
+  spatial.dir <- file.path(sample_dir, "spatial")
+
+  
+  # Print out the current sample being processed for tracking purposes
+  cat("Processing sample:", sample_name, "\n")
+  
+  # Step 1: Load the spatial image using Read10X_Image
+  slice1 <- Read10X_Image(image.dir, image.name = "tissue_lowres_image.png", filter.matrix = TRUE)
+  
+  # Convert the coordinates to integer for correct plotting
+    slice1@coordinates <- slice1@coordinates %>% dplyr::mutate(across(everything(), as.numeric))
+    
+  # Save the slice1 object to the spatial directory
+  saveRDS(slice1, file = file.path(spatial.dir, "slice1.rds"))
+  
+  # Step 2: Load the spatial expression data
+  spatial_object <- Load10X_Spatial(sample_dir,
+                                    filename = "filtered_feature_bc_matrix.h5", 
+                                    assay = "Spatial", 
+                                    slice = "slice1", 
+                                    filter.matrix = TRUE,
+                                    to.upper = FALSE, 
+                                    image = NULL)
+  #make sure the seurat object is saved with numeric coordinates
+  spatial_object@images$slice1@coordinates <- spatial_object@images$slice1@coordinates %>%
+    dplyr::mutate(across(everything(), as.numeric))
+  # Add  name column to the metadata 
+  spatial_object$Cap.area<-sample_name
+  
+  # Save the Seurat spatial object
+  saveRDS(spatial_object, file = file.path(object.dir, paste0("spatial_object_", sample_name, ".rds")))
+  
+  # Step 3: Plot the spatial feature plot for "nCount_Spatial"
+  plot <- SpatialFeaturePlot(spatial_object, features = "nCount_Spatial") + 
+    ggplot2::theme_minimal()
+  
+  # Save the plot to the plots directory
+  ggsave(filename = file.path(plots.dir, paste0(sample_name, "_nCount_Spatial.png")), plot = plot)
+  
+  # Print confirmation of saved object and plot
+  cat("Saved spatial object for", sample_name, "as", paste0("spatial_object_", sample_name, ".rds"), "\n")
+  cat("Saved plot for", sample_name, "as", paste0(sample_name, "_nCount_Spatial.png"), "\n\n")
+}
+
