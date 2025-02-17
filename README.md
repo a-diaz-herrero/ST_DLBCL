@@ -10,4 +10,5 @@ Spatial transcriptomic data was processed employing R (v4.3.2) and Seurat (v4.1.
 The spots of each sample were decomposed using the corresponding public scRNA-seq dataset (either DLBCL or SLO) as reference. The cell type proportions per  spot were generated using the probabilistic method RCTD (Robust Cell Type Decomposition) on multi-mode. 
 
 ## 03_Leiden clustering of spots based on cell-type proportions
-Leiden algorithm, a graph-based clustering method implemented by Python v3.x, was applied in R to identify groups of spots based on similar cell composition.
+a. Leiden algorithm, a graph-based clustering method implemented by Python v3.x, was applied in R to identify groups of spots based on similar cell composition.
+b. Functions for Cell-Eco visualization: heatmap, pie charts, balloon plots and bar plots.
