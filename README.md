@@ -13,7 +13,7 @@ The spots of each sample were decomposed using the corresponding public scRNA-se
 
 ## 04_Leiden clustering of spots based on cell-type proportions
 a. Leiden algorithm, a graph-based clustering method implemented by Python v3.x, was applied in R to identify groups of spots based on similar cell composition.
-b. Functions for Cell-Eco visualization: heatmap, pie charts, balloon plots and bar plots.
+b. Functions for Cell-Eco visualization: heatmap, pie charts, bar plots and balloon plot.
 
 ## 0 Gene expression analysis between cellular ecosystems
  
