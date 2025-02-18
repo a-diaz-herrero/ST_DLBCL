@@ -20,7 +20,9 @@ b. Functions for Cell-Eco visualization: heatmap, pie charts, bar plots and ball
 
 ## 07_Neighboring
 The neighbor score (N score) was calculated as a frequency of neighbor interactions by the following formula:
+
 ![image](https://github.com/user-attachments/assets/82339085-cd42-4641-8563-41325ca6430b)
+
 The package Semla (v1.1.6) was used to extract Cellular ecosystem’s identity of spots spatially co-localizing
 
 ## 08_Bulk
