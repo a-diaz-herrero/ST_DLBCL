@@ -25,6 +25,13 @@ The neighbor score (N score) was calculated as a frequency of neighbor interacti
 
 The package Semla (v1.1.6) was used to extract Cellular ecosystem’s identity of spots spatially co-localizing
 
+
+The neighbor score of each group of samples was calculated as a mean of neighbor scores as follows:
+
+
+![image](https://github.com/user-attachments/assets/db8a2911-643d-4d3b-939d-aa1bc6ddde6f)
+
+
 ## 08_Bulk
 ## 09_Cell-Eco neighboring analysis
 Neighbor frequency 
