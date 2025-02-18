@@ -1,6 +1,8 @@
 # ST_DLBCL
 This repository holds the R scripts used for the article "Spatial transcriptomics unveils immune cellular ecosystems associated with patient survival in diffuse large B-cell lymphoma."
 
+![image](https://github.com/user-attachments/assets/2f032b1c-feca-4133-9e93-083b9f28dde7)
+
 # Index
 
 ## 01_Spatial seurat object preprocessing
@@ -18,7 +20,7 @@ b. Functions for Cell-Eco visualization: heatmap, pie charts, bar plots and ball
  
 ## 06_Intra-spot cellular communication using ICELLNET
 
-## 07_Neighboring
+## 07_Cell-Eco neighboring analysis
 The neighbor score (N score) was calculated as a frequency of neighbor interactions by the following formula:
 
 ![image](https://github.com/user-attachments/assets/82339085-cd42-4641-8563-41325ca6430b)
