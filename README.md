@@ -15,10 +15,15 @@ The spots of each sample were decomposed using the corresponding public scRNA-se
 a. Leiden algorithm, a graph-based clustering method implemented by Python v3.x, was applied in R to identify groups of spots based on similar cell composition.
 b. Functions for Cell-Eco visualization: heatmap, pie charts, bar plots and balloon plot.
 
-## 0 Gene expression analysis between cellular ecosystems
  
-## 0_Intra spot cellular communication using ICELLNET
+## 06_Intra-spot cellular communication using ICELLNET
 
-## 0_Neighboring
+## 07_Neighboring
+The neighbor score (N score) was calculated as a frequency of neighbor interactions by the following formula:
+![image](https://github.com/user-attachments/assets/82339085-cd42-4641-8563-41325ca6430b)
+The package Semla (v1.1.6) was used to extract Cellular ecosystem’s identity of spots spatially co-localizing
 
-## Bulk
+## 08_Bulk
+## 09_Cell-Eco neighboring analysis
+Neighbor frequency 
+## Apply module score?
