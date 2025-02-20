@@ -40,7 +40,8 @@ scored as previously used in the literature by Liu et al. 2024  as follows:
 ![image](https://github.com/user-attachments/assets/fa6e3d36-df90-4660-a6db-803e0822568e)
 
 
-![image](https://github.com/user-attachments/assets/09b913b8-4aee-4644-a29c-3b28b062f8b4)
+![image](https://github.com/user-attachments/assets/849ea832-f0e2-4e02-9b6b-a498cfef2d28)
+
 
 
 n is the number of genes in a signature, pi is the adjusted p-value of the gene i, xi is the expression of the gene i in the RNAseq matrix, I corresponds to the sign of the log2FC values.
