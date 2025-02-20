@@ -1,7 +1,7 @@
 # ST_DLBCL
 This repository holds the R scripts used for the article "Spatial transcriptomics unveils immune cellular ecosystems associated with patient survival in diffuse large B-cell lymphoma."
 
-![image](https://github.com/user-attachments/assets/2f032b1c-feca-4133-9e93-083b9f28dde7)
+
 
 # Index
 
@@ -15,12 +15,9 @@ The spots of each sample were decomposed using the corresponding public scRNA-se
 
 ## 04_Leiden clustering of spots based on cell-type proportions
 a. Leiden algorithm, a graph-based clustering method implemented by Python v3.x, was applied in R to identify groups of spots based on similar cell composition.
-b. Functions for Cell-Eco visualization: heatmap, pie charts, bar plots and balloon plot.
+b. Cell-Eco visualization: heatmap, pie charts, bar plots and balloon plot.
 
- 
-## 06_Intra-spot cellular communication using ICELLNET
-
-## 07_Cell-Eco neighboring analysis
+## 05_Cell-Eco neighboring analysis
 The neighbor score (N score) was calculated as a frequency of neighbor interactions by the following formula:
 
 ![image](https://github.com/user-attachments/assets/82339085-cd42-4641-8563-41325ca6430b)
@@ -33,8 +30,23 @@ The neighbor score of each group of samples was calculated as a mean of neighbor
 
 ![image](https://github.com/user-attachments/assets/db8a2911-643d-4d3b-939d-aa1bc6ddde6f)
 
+## 06_Intra-spot cellular communication using ICELLNET
+Input: merged spatial transcriptomics objects of Cell-Ecos of interest and ICELLNET ligand/receptor interaction database
+Cell cell communication analysis using ICELLNET package https://github.com/soumelis-lab/ICELLNET
 
-## 08_Bulk
-## 09_Cell-Eco neighboring analysis
-Neighbor frequency 
-## Apply module score?
+## 07_Cell-Eco signature scores 
+The signature for each Cell-Eco was defined as the percentile 5 of differentially expressed genes (p<0.05 and |log2FC|>0.25) ordered by adjusted p-value. These signatures were applied to external RNAseq data set Lacy et al. 2020 and
+scored as previously used in the literature by Liu et al. 2024  as follows:
+![image](https://github.com/user-attachments/assets/fa6e3d36-df90-4660-a6db-803e0822568e)
+
+
+![image](https://github.com/user-attachments/assets/09b913b8-4aee-4644-a29c-3b28b062f8b4)
+
+
+n is the number of genes in a signature, pi is the adjusted p-value of the gene i, xi is the expression of the gene i in the RNAseq matrix, I corresponds to the sign of the log2FC values.
+
+## 8_Patient stratification and survival probabilities
+Signature scores for each Cellular ecosystem were scaled and centered prior to the hierarchical clustering for patient stratification. Survival probabilities of each patient groups were investigated using Cox proportional-hazards model and Kaplan-Meier curves of survival.
+
+## 08_Spatial autocorrelation
+Spatially autocorrelated genes were identified using Semla (v1.1.6)
