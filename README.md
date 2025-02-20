@@ -8,7 +8,10 @@ This repository holds the R scripts used for the article "Spatial transcriptomic
 ## 01_Spatial seurat object preprocessing
 Spatial transcriptomic data was processed employing R (v4.3.2) and Seurat (v4.1.1). Capture areas shared by multiple biopsies were segmented based on their coordinates with the package Semla (v1.1.6)
 
-## 02_scRNAseq preprocessing and annotation 
+## 02_scRNAseq preprocessing
+External scRNAseq datasets processed employing R (v4.3.2) and Seurat (v4.1.1). 
+Samples were merged, integrated and annotated. 
+CopyKAT (v1.0.5) used for CNV detection and malignant B cell annotation.
 
 ## 03_RCTD deconvolution
 The spots of each sample were decomposed using the corresponding public scRNA-seq dataset (either DLBCL or SLO) as reference. The cell type proportions per  spot were generated using the probabilistic method RCTD (Robust Cell Type Decomposition) on multi-mode. 
