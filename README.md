@@ -50,8 +50,8 @@ scored as previously used in the literature by Liu et al. 2024  as follows:
 
 n is the number of genes in a signature, pi is the adjusted p-value of the gene i, xi is the expression of the gene i in the RNAseq matrix, I corresponds to the sign of the log2FC values.
 
-## 08_Patient stratification and survival probabilities
-Signature scores for each Cellular ecosystem were scaled and centered prior to the hierarchical clustering for patient stratification. Survival probabilities of each patient groups were investigated using Cox proportional-hazards model and Kaplan-Meier curves of survival.
+## 08_Patient stratification and survival 
+Signature scores for each Cellular Ecosystem were scaled and centered prior to the hierarchical clustering for patient stratification from the Lacy et al. 2020 dataset. Survival probabilities of each patient groups were investigated using Cox proportional-hazards model and Kaplan-Meier curves of survival.
 
 ## 09_Spatial autocorrelation
 Spatially autocorrelated genes were identified using Semla (v1.1.6) https://ludvigla.github.io/semla/
