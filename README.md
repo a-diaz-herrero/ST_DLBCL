@@ -35,11 +35,11 @@ The neighbor score of each group of samples was calculated as a mean of neighbor
 
 ## 06_Intra-spot cellular communication using ICELLNET
 Input: merged spatial transcriptomics objects of Cell-Ecos of interest and ICELLNET ligand/receptor interaction database
-Cell cell communication analysis using ICELLNET package https://github.com/soumelis-lab/ICELLNET
+Cell cell communication analysis using the [ICELLNET package] (https://github.com/soumelis-lab/ICELLNET)
 
 ## 07_Cell-Eco signature scores 
 The signature for each Cell-Eco was defined as the percentile 5 of differentially expressed genes (p<0.05 and |log2FC|>0.25) ordered by adjusted p-value. These signatures were applied to external RNAseq data set Lacy et al. 2020 and
-scored as previously used in the literature by Liu et al. 2024  as follows:
+scored as previously used in the literature by [Liu et al. 2024](https://pubmed.ncbi.nlm.nih.gov/38459052/) as follows:
 
 ![image](https://github.com/user-attachments/assets/fa6e3d36-df90-4660-a6db-803e0822568e)
 
