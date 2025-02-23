@@ -6,7 +6,7 @@ This repository holds the R scripts used for the article "Spatial transcriptomic
 # Index
 
 ## 01_Spatial seurat object preprocessing
-Spatial transcriptomic data was processed employing R (v4.3.2) and Seurat (v4.1.1). Capture areas shared by multiple biopsies were segmented based on their coordinates with the package Semla (v1.1.6)
+Spatial transcriptomic data was processed employing R (v4.3.2) and Seurat (v4.1.1). Capture areas shared by multiple biopsies were segmented based on their coordinates with the package Semla (v1.1.6). The spatial transcriptomic data generated in this study has been deposited in Gene Expression Omnibus (GEO) under the accession number [GSE276542](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE276542)
 
 ## 02_scRNA-seq preprocessing
 External scRNAseq datasets processed employing R (v4.3.2) and Seurat (v4.1.1). 
