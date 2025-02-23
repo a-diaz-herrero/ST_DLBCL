@@ -55,4 +55,4 @@ n is the number of genes in a signature, pi is the adjusted p-value of the gene 
 Signature scores for each Cellular Ecosystem were scaled and centered prior to the hierarchical clustering for patient stratification from the Lacy et al. 2020 dataset. Survival probabilities of each patient groups were investigated using Cox proportional-hazards model and Kaplan-Meier curves of survival.
 
 ## 09_Spatial autocorrelation
-Spatially autocorrelated genes were identified using Semla (v1.1.6) https://ludvigla.github.io/semla/
+Spatially autocorrelated genes were identified using [Semla (v1.1.6)](https://ludvigla.github.io/semla/)
