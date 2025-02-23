@@ -1,6 +1,7 @@
 # ST_DLBCL
-This repository holds the R scripts used for the article "Spatial transcriptomics unveils immune cellular ecosystems associated with patient survival in diffuse large B-cell lymphoma."
+This repository holds the R scripts for the article "Spatial transcriptomics unveils immune cellular ecosystems associated with patient survival in diffuse large B-cell lymphoma." by Diaz Herrero et al. 2025
 
+![image](https://github.com/user-attachments/assets/8ab9ea19-40e4-4ff1-93c4-f71db3342ea0)
 
 
 # Index
