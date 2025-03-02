@@ -5,10 +5,11 @@ This repository holds the R scripts for the article "Spatial transcriptomics unv
 ## Abstract
 
 Diffuse Large B-cell Lymphoma (DLBCL) is the most prevalent subtype of non-Hodgkin’s lymphoma for which current therapeutic strategies remain insufficient. The diffuse nature of DLBCL, lacking distinct tissue structures, represents a challenge to elucidate the cellular organization and interactions within the tumor microenvironment (TME). In this study, we applied spatial transcriptomics to identify spatially-resolved gene expression profiles in 10 DLBCL tissue samples, identifying distinct immune cell infiltration and colocalization patterns. These profiles were classified into six cellular ecosystems (Cell-Eco) that differ in cellular composition, functional patterns, and neighborhood characteristics. The spatially-resolved Cell-Eco signatures provided prognostic scores that stratified patients with different overall survival rates. We also found that C1q+ tumor-associated macrophages are the primary cells interacting with malignant B cells and influencing the spatial architecture of the TME. This study provides novel biological insights into the complexity of the TME in DLBCL and highlights the potential prognostic value of its spatial organization. 
+
 ![image](https://github.com/user-attachments/assets/8ab9ea19-40e4-4ff1-93c4-f71db3342ea0)
 
 ## Data access
-The spatial transcriptomics dataset generated for this study has been deposited in Gene Expression Omnibus (GEO) under the accession number GSE276542 
+The spatial transcriptomics dataset generated for this study has been deposited in Gene Expression Omnibus (GEO) under the accession number [GSE276542](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE276542)
 
 
 # Index
