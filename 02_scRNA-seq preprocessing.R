@@ -18,7 +18,7 @@ library(ggraph)
 library(clustree)
 library(gridExtra)
 library(writexl)
-library(ggarrange)
+library(copykat)
 
 
 # Directories----------------------------------------------------------------------------
@@ -101,7 +101,7 @@ BI_3 <- AugmentPlot(VlnPlot(object =  object, features = "PC_1", group.by = "ori
 
 #--------------------------------After Integration (take dims.use = 30 or 50 )
 
-object_i<- harmony::RunHarmony(object =object,  group.by.vars="sample_id", reduction = "pca", assay.use="SCT", 
+object_i<- harmony::RunHarmony(object =object,  group.by.vars="sample_id",  assay.use="SCT", 
                                plot_convergence = T, verbose = T)
 
 # Plot the harmnony corrected PCA of integrated data:
